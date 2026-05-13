@@ -1,0 +1,45 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mycoder"
+version = "0.3.0"
+description = "一个极简、可读、可运行的中文 AI 编程 Agent。"
+readme = "README_CN.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [
+    { name = "mycoder" },
+]
+keywords = ["ai", "agent", "coding", "cli", "llm", "mycoder"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development",
+    "Topic :: Software Development :: Code Generators",
+    "Topic :: Terminals",
+]
+dependencies = [
+    "openai>=1.0",
+    "rich>=13.0",
+    "prompt_toolkit>=3.0",
+    "python-dotenv>=1.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["mycoder"]
+
+[project.optional-dependencies]
+litellm = ["litellm>=1.60.0,<2.0.0"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+mycoder = "mycoder.cli:main"
